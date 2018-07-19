@@ -1,0 +1,1 @@
+# CORE-pokemon-battler-pair
