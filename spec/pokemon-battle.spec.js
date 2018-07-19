@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { Trainer, Pokemon, Battle } = require('../pokemon-battle.js')
+const { Trainer, Pokemon, Battle } = require('../pokemon-battle.js');
 
 describe('Trainer', () => {
   it('Trainer shloud have name', () => {
