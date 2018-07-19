@@ -1,0 +1,23 @@
+{
+  "name": "core-pokemon-battler-pair",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha spec/*spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JanMach97/CORE-pokemon-battler-pair.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JanMach97/CORE-pokemon-battler-pair/issues"
+  },
+  "homepage": "https://github.com/JanMach97/CORE-pokemon-battler-pair#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  }
+}
