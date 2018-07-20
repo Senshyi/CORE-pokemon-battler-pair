@@ -1,29 +1,27 @@
 const inquirer = require('inquirer');
 const { Trainer, Pokemon, Battle } = require('../pokemon-battle.js');
 
-const charmeleon = new Pokemon(
-  'charmeleon',
-  100,
-  30,
-  'Chaaaar...MELEON',
-  'Blaze',
-  'fire'
-);
-const bulbasaur = new Pokemon(
-  'bulbasaur',
-  98,
-  25,
-  'Buuulbasaur',
-  'raizor leaf',
-  'grass'
-);
 const health = 100;
+const charmeleon = new Pokemon('charmeleon', 100, 30, 'Chaaaar...MELEON', 'Blaze', 'fire');
+const bulbasaur = new Pokemon('bulbasaur', 98, 25, 'Buuulbasaur', 'raizor leaf', 'grass');
+const pikachu = new Pokemon('pikachu', health, 30, 'Pika Pika', 'Lightning Rod', 'electric');
+const lucario = new Pokemon('lucario', health, 33, '', 'Steadfast', 'fighting');
+const gengar = new Pokemon('gengar', health, 20, 'Gengaar', 'Cursed Body', 'ghost');
+const magikarp = new Pokemon('magikarp', health, 15, '', 'Swift Swim', 'water');
+const gyarados = new Pokemon('gyarados', health, 26, '......', 'Intimidate', 'water');
+const koffing = new Pokemon('koffing', health, 18, 'Koffing!', 'Levitate', 'poison');
+const arcanine = new Pokemon('arcanine', health, 30, 'Woof', 'Flash Fire', 'fire');
+const dialga = new Pokemon('dialga', health, 30, '', 'Pressure', 'dragon');
 const squirtle = new Pokemon('squirtle', health, 23, 'SQUIRTLE', 'splash', 'water');
 const mewtwo = new Pokemon('mewtwo', health, 40, 'hello', 'confusion', 'psychic');
+
+
+
 const ash = new Trainer('Ash', [charmeleon, bulbasaur]);
 const gary = new Trainer('Gary', [squirtle, mewtwo]);
+const pokedex = [squirtle, mewtwo, bulbasaur, charmeleon, pikachu, lucario, gengar, magikarp, gyarados, koffing, arcanine, dialga]
 
-
+let randPokemon = Math.floor(Math.random() * 12)
 
 let P1 = null;
 let P2 = null;
@@ -60,7 +58,7 @@ let catchQuestion = [
   {
     type: 'list',
     name: 'catchQuestion',
-    message: `A wild ${charmeleon.name} appeared! What do you want to do?`,
+    message: `A wild ${pokedex[randPokemon].name} appeared! What do you want to do?`,
     choices: ['Throw pokeball', 'Run']
   }
 ]
@@ -120,14 +118,14 @@ inquirer.prompt(question1).then(answers => {
           if (answer.catchQuestion === 'Throw pokeball') {
             console.log('Throw!!!');
             let rand = Math.floor(Math.random() * 10);
-            // console.log(rand);
             if (rand > 5) {
-              T1.catch(charmeleon);
-              console.log(`You caught ${T1.collection[T1.collection.length - 1].name}! It was added to your collection!`);
+              T1.catch(pokedex[randPokemon]);
+              console.log(`You caught ${pokedex[randPokemon].name}! It was added to your collection!`);
             } else {
-              console.log(`Oh no you missed! Charmeleon ran away!`);
-              adventure();
+              console.log(`Oh no you missed! ${pokedex[randPokemon].name} ran away!`)
+              randPokemon = Math.floor(Math.random() * 12);
             }
+            adventure();
           }
           else if (answer.catchQuestion === 'Run') console.log('Run!!!');
           // console.log(answer.catchQuestion);
